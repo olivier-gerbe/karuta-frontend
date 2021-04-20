@@ -3361,7 +3361,7 @@ UIFactory["Node"].buttons = function(node,type,langcode,inline,depth,edit,menu,b
 					var sharelabel = shares[i][5];
 					var shareoptions = (shares[i].length>7) ? shares[i][7] : "";
 					if (shareto!='' && shareroles.indexOf('2world')<0) {
-						if (shareto!='?' && shareduration!='?' && shareoptions!="") {
+						if (shareto!='?' && shareduration!='?') {
 							var sharetoemail = "";
 							var sharetoroles = "";
 							var sharetos = shareto.split(" ");

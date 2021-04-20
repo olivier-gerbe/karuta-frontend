@@ -1286,9 +1286,10 @@ function sendEmailPublicURL(encodeddata,email,langcode,sharetomessage,sharetoobj
 	message = message.replace("#want-sharing#",karutaStr[LANG]['want-sharing']);
 	message = message.replace("#see#",karutaStr[LANG]['see']);
 	message = message.replace("#do not edit this#",url);
-	message += "&lt;hr&gt;" + sharetomessage;
+	if (sharetomessage!=undefined)
+		message += "&lt;hr&gt;" + sharetomessage;
 	var subject = USER.firstname+" "+USER.lastname+" "+karutaStr[LANG]['want-sharing'];
-	if (sharetoobj!="")
+	if (sharetoobj!= undefined && sharetoobj!="")
 		subject = sharetoobj;
 	//------------------------------
 	var xml ="<node>";
