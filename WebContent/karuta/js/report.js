@@ -174,7 +174,7 @@ function r_processPortfolio(no,xmlReport,destid,data,line)
 		dashboard_infos[destid] = {'xmlReport':xmlReport,'data':data};
 	}
 	var children = $(":root",xmlReport).children();
-	processReportActions(destid,children,data);
+	processReportActions(destid,children,data,line);
 	$.ajaxSetup({async: true});
 }
 
@@ -189,12 +189,12 @@ function r_report_process(xmlDoc,json)
 }
 
 //=================================================
-function processReportActions(destid,actions,data)
+function processReportActions(destid,actions,data,line)
 //=================================================
 {
 	for (var i=0; i<actions.length;i++){
 		var tagname = $(actions[i])[0].tagName;
-		g_report_actions[tagname](destid,actions[i],i.toString(),data);
+		g_report_actions[tagname](destid,actions[i],i.toString(),data,line);
 	};
 };
 
@@ -256,7 +256,7 @@ g_report_actions['for-each-line'] = function (destid,action,no,data)
 		}
 		for (var i=0; i<actions.length;i++){
 			var tagname = $(actions[i])[0].tagName;
-			g_report_actions[tagname](destid,actions[j],no+'-'+j.toString()+'-'+i.toString(),data);
+			g_report_actions[tagname](destid,actions[i],no+'-'+j.toString()+'-'+i.toString(),data,j);
 		}
 	}
 }
@@ -522,7 +522,7 @@ g_report_actions['cell'] = function (destid,action,no,data)
 //=============================================================================
 
 //==================================
-g_report_actions['for-each-person'] = function (destid,action,no,data)
+g_report_actions['for-each-person'] = function (destid,action,no,data,line)
 //==================================
 {
 	var countvar = $(action).attr("countvar");
@@ -580,7 +580,7 @@ g_report_actions['for-each-person'] = function (destid,action,no,data)
 //=============================================================================
 
 //==================================
-g_report_actions['for-each-portfolio'] = function (destid,action,no,data)
+g_report_actions['for-each-portfolio'] = function (destid,action,no,data,line)
 //==================================
 {
 	var countvar = $(action).attr("countvar");
@@ -734,7 +734,7 @@ g_report_actions['for-each-portfolio'] = function (destid,action,no,data)
 //=============================================================================
 
 //==================================
-g_report_actions['for-each-portfolio-node'] = function (destid,action,no,data)
+g_report_actions['for-each-portfolio-node'] = function (destid,action,no,data,line)
 //==================================
 {
 	var countvar = $(action).attr("countvar");
