@@ -1313,7 +1313,7 @@ g_report_actions['europass'] = function (destid,action,no,data)
 	var attr_help = "";
 	var selector = r_getSelector('asmUnitStructure.EuropassL','');
 	var node = $(selector.jquery,data);
-	if (node.length>0 || select.substring(0,1)=="."){
+	if (node.length>0){
 		var nodeid = $(node).attr("id");
 		var text = "<table id='"+destid+"europass' style='width:100%;margin-top:30px;'></table>";
 		$("#"+destid).append($(text));
