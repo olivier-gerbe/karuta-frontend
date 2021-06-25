@@ -531,6 +531,9 @@ UIFactory["Get_Get_Resource"].parse = function(destid,type,langcode,data,self,di
 			if (code.indexOf("?")>-1) {
 				display_value = true;
 			}
+			if (code.indexOf("?")>-1) {
+				display_value = true;
+			}
 			code = cleanCode(code);
 			//------------------------------
 			if ($('code',resource).text().indexOf('----')>-1) {
@@ -561,9 +564,6 @@ UIFactory["Get_Get_Resource"].parse = function(destid,type,langcode,data,self,di
 					display_label = false;
 				if (code.indexOf("@")<0) {
 					display_code = true;
-				}
-				if (code.indexOf("?")>-1) {
-					display_value = true;
 				}
 				code = cleanCode(code);
 				//--------------------------------

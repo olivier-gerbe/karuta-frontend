@@ -1279,6 +1279,7 @@ function sendEmailPublicURL(encodeddata,email,langcode,sharetomessage,sharetoobj
 	var url = window.location.href;
 	var serverURL = url.substring(0,url.lastIndexOf(appliname)+appliname.length);
 	url = serverURL+"/application/htm/public.htm?i="+encodeddata+"&amp;lang="+languages[langcode];
+//	url = "https://moneparcours.eportfolium.fr/moneparcours-externe/application/htm/public.htm?i="+encodeddata+"&amp;lang="+languages[langcode];
 	//------------------------------
 	var message = "";
 	message = g_sendEmailPublicURL_message.replace("#firstname#",USER.firstname);
@@ -1286,9 +1287,10 @@ function sendEmailPublicURL(encodeddata,email,langcode,sharetomessage,sharetoobj
 	message = message.replace("#want-sharing#",karutaStr[LANG]['want-sharing']);
 	message = message.replace("#see#",karutaStr[LANG]['see']);
 	message = message.replace("#do not edit this#",url);
-	message += "&lt;hr&gt;" + sharetomessage;
+	if (sharetomessage!=undefined)
+		message += "&lt;hr&gt;" + sharetomessage;
 	var subject = USER.firstname+" "+USER.lastname+" "+karutaStr[LANG]['want-sharing'];
-	if (sharetoobj!="")
+	if (sharetoobj!= undefined && sharetoobj!="")
 		subject = sharetoobj;
 	//------------------------------
 	var xml ="<node>";
