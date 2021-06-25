@@ -1800,9 +1800,20 @@ function setCSSportfolio(data)
 function logout()
 //==============================
 {
-	window.location=serverBCK_API+"/credential/logout";
+	$.ajax({
+		type: "GET",
+		dataType: "text",
+		url: serverBCK_API+"/credential/logout",
+		data: "",
+		success: function(data) {
+		window.location="login.htm?lang="+LANG;
+		},
+		error: function(data) {
+		window.location="login.htm?lang="+LANG;
+		}
+	});
 }
- 
+
 //==============================
 function hideAllPages()
 //==============================
